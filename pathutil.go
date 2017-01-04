@@ -409,8 +409,6 @@ func (c *fsCacheT) find(w evalWriter, fc findCommand, path string, id fileid, de
 			if mode&os.ModeSymlink == os.ModeSymlink {
 				lpath := filepathJoin(path, ent.name)
 				if p, ok := seen[ent.id]; ok {
-					// stderr?
-					glog.Errorf("find: File system loop detected; `%s' is part of the same file system loop as `%s'.", lpath, p)
 					return
 				}
 				seen[ent.id] = lpath
